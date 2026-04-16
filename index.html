@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thiết Kế Cuộc Đời - Khoá Học Miễn Phí | Học viện RNI</title>
+<meta name="description" content="Khoá học miễn phí Thiết Kế Cuộc Đời. 11 bài học video, bài tập thực hành, chứng chỉ hoàn thành. Học viện RNI - Ruby Nguyen." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Thiết Kế Cuộc Đời - Khoá Học Miễn Phí | Học viện RNI" />
+<meta property="og:description" content="11 bài học video, bài tập thực hành, chứng chỉ hoàn thành. Thắp sáng ngọn hải đăng bên trong bạn." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet" />
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Be Vietnam Pro', 'system-ui', 'sans-serif'], display: ['Playfair Display', 'serif'] },
+      colors: {
+        rni: { 50:'#fef2f2', 100:'#fee2e2', 200:'#fecaca', 300:'#fca5a5', 400:'#f87171', 500:'#ef4444', 600:'#9b1106', 700:'#7f0e05', 800:'#660b04', 900:'#4d0803' },
+        gold: { 50:'#fffbeb', 100:'#fef3c7', 200:'#fde68a', 300:'#fcd34d', 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706' },
+        cream: { 50:'#fdfbf7', 100:'#faf5ed' },
+        mint: { 400:'#34d399', 500:'#10b981', 600:'#059669' },
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Be Vietnam Pro', system-ui, sans-serif; background: #fdfbf7; }
+  .fade-in { animation: fadeIn 0.5s ease-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .slide-up { animation: slideUp 0.7s ease-out; }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  .bounce-in { animation: bounceIn 0.6s cubic-bezier(0.68,-0.55,0.27,1.55); }
+  @keyframes bounceIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+  .float { animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+  @keyframes pulseGlow { 0%,100% { box-shadow: 0 0 0 0 rgba(155,17,6,0.3); } 50% { box-shadow: 0 0 0 12px rgba(155,17,6,0); } }
+  .progress-bar { transition: width 0.6s ease; }
+  .card-hover { transition: all 0.25s ease; }
+  .card-hover:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(155,17,6,0.1); }
+  .hero-bg { background: linear-gradient(135deg, #fdfbf7 0%, #fef2f2 30%, #fdfbf7 60%, #fffbeb 100%); }
+  .rni-gradient { background: linear-gradient(135deg, #9b1106 0%, #ef4444 50%, #f59e0b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; }
+  .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: 12px; }
+  .kajabi-hidden { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0; }
+  @media print {
+    .no-print { display: none !important; }
+    .print-only { display: block !important; }
+    body { background: white; }
+  }
+  .print-only { display: none; }
+</style>
+</head>
+<body>
+<!-- Kajabi Hidden Form -->
+<iframe name="kajabi-submit-frame" class="kajabi-hidden" aria-hidden="true"></iframe>
+<form id="kajabi-hidden-form"
+      action="https://www.rni.institute/forms/2149179718/form_submissions"
+      method="post"
+      target="kajabi-submit-frame"
+      accept-charset="UTF-8"
+      style="position:absolute;left:-9999px;">
+  <input type="text" name="form_submission[name]" id="kajabi-name-field" value="" />
+  <input type="email" name="form_submission[email]" id="kajabi-email-field" value="" />
+</form>
+
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useCallback, useRef } = React;
+
+// ============================================================
+// KAJABI SUBMIT
+// ============================================================
+function submitToKajabi(name, email) {
+  try {
+    document.getElementById('kajabi-name-field').value = name;
+    document.getElementById('kajabi-email-field').value = email;
+    document.getElementById('kajabi-hidden-form').submit();
+    console.log('[Kajabi] ✓ Form submitted for:', email);
+  } catch(e) { console.error('[Kajabi] Submit error:', e); }
+}
+
+// ============================================================
+// COURSE DATA
+// ============================================================
+const LESSONS = [
+  { id: 1, title: 'Lý do bạn có mặt ở đây', icon: '🌟', duration: '15 phút', videoId: 'VIDEO_ID_1',
+    quiz: [
+      { q: 'Điều gì quan trọng nhất khi bắt đầu hành trình thiết kế cuộc đời?', opts: ['Có thật nhiều tiền', 'Sẵn sàng nhìn lại bản thân một cách trung thực', 'Chờ đến khi mọi thứ hoàn hảo', 'Làm theo kế hoạch của người khác'], correct: 1 },
+    ]},
+  { id: 2, title: 'Trắc nghiệm: ngọn hải đăng trong bạn đang sáng hay tắt?', icon: '🔦', duration: '10 phút', videoId: 'VIDEO_ID_2',
+    quiz: [
+      { q: '"Ngọn hải đăng bên trong" tượng trưng cho điều gì?', opts: ['Sự giàu có về vật chất', 'La bàn giá trị và mục đích sống của bạn', 'Khả năng kiếm tiền', 'Danh tiếng xã hội'], correct: 1 },
+    ]},
+  { id: 3, title: 'Thắp sáng lại ngọn hải đăng bên trong', icon: '💡', duration: '25 phút', videoId: 'VIDEO_ID_3',
+    quiz: [
+      { q: 'Bước đầu tiên để thắp sáng lại ngọn hải đăng bên trong là gì?', opts: ['Thay đổi công việc ngay lập tức', 'Dừng lại, lắng nghe bản thân và nhận ra mình đang ở đâu', 'Hỏi ý kiến tất cả mọi người xung quanh', 'Đọc thật nhiều sách self-help'], correct: 1 },
+    ]},
+  { id: 4, title: 'Trạm soi sáng - Định', icon: '🧭', duration: '30 phút', videoId: 'VIDEO_ID_4',
+    quiz: [
+      { q: '"Định" trong hành trình thiết kế cuộc đời có nghĩa là gì?', opts: ['Quyết định nhanh chóng mà không cần suy nghĩ', 'Xác định rõ giá trị cốt lõi và hướng đi của bản thân', 'Để người khác định hướng cho mình', 'Giữ nguyên hiện trạng, không thay đổi gì'], correct: 1 },
+    ]},
+  { id: 5, title: 'Trạm soi sáng - Tinh', icon: '✨', duration: '30 phút', videoId: 'VIDEO_ID_5',
+    quiz: [
+      { q: '"Tinh" trong hành trình soi sáng giúp bạn điều gì?', opts: ['Trở nên hoàn hảo trong mọi việc', 'Tinh lọc và làm sắc nét những gì thực sự quan trọng', 'Loại bỏ tất cả mọi người xung quanh', 'Chỉ tập trung vào công việc'], correct: 1 },
+    ]},
+  { id: 6, title: 'Trạm soi sáng - Đủ', icon: '🌾', duration: '25 phút', videoId: 'VIDEO_ID_6',
+    quiz: [
+      { q: 'Trạng thái "Đủ" mang ý nghĩa gì?', opts: ['Không cần cố gắng thêm nữa', 'Biết trân trọng hiện tại và nhận ra mình đã có đủ nền tảng để tiến bước', 'Từ chối mọi cơ hội mới', 'Hài lòng với mức sống tối thiểu'], correct: 1 },
+    ]},
+  { id: 7, title: 'Trạm soi sáng - Hiến', icon: '🤝', duration: '25 phút', videoId: 'VIDEO_ID_7',
+    quiz: [
+      { q: '"Hiến" trong bối cảnh thiết kế cuộc đời nghĩa là gì?', opts: ['Cho đi tất cả tài sản', 'Sống với tinh thần cống hiến, tạo giá trị cho cộng đồng', 'Làm từ thiện mỗi tháng', 'Hy sinh bản thân hoàn toàn vì người khác'], correct: 1 },
+    ]},
+  { id: 8, title: 'Thiết kế chặng tiếp theo rực rỡ', icon: '🎨', duration: '35 phút', videoId: 'VIDEO_ID_8',
+    quiz: [
+      { q: 'Khi thiết kế chặng tiếp theo, điều quan trọng nhất là gì?', opts: ['Copy kế hoạch của người thành công', 'Kết hợp giá trị cốt lõi của bản thân với hành động cụ thể', 'Lên kế hoạch 10 năm chi tiết từng ngày', 'Chờ cảm hứng đến rồi mới hành động'], correct: 1 },
+    ]},
+  { id: 9, title: 'Thực hành Sống mỗi ngày', icon: '🌱', duration: '20 phút', videoId: 'VIDEO_ID_9',
+    quiz: [
+      { q: 'Thực hành sống mỗi ngày hiệu quả nhất khi nào?', opts: ['Chỉ khi gặp khó khăn', 'Biến nó thành thói quen nhỏ, đều đặn hàng ngày', 'Dành cả ngày cuối tuần để thực hành', 'Chỉ thực hành một lần rồi thôi'], correct: 1 },
+    ]},
+  { id: 10, title: 'Hỏi đáp', icon: '💬', duration: '50 phút', videoId: 'VIDEO_ID_10',
+    quiz: [
+      { q: 'Qua phần hỏi đáp, bạn nhận ra điều gì quan trọng nhất?', opts: ['Mọi người đều có câu trả lời giống nhau', 'Mỗi người có hành trình riêng, nhưng đều cần sự dũng cảm để thay đổi', 'Không cần hỏi ai, tự mình biết hết', 'Chỉ có chuyên gia mới có câu trả lời đúng'], correct: 1 },
+    ]},
+  { id: 11, title: 'Chuỗi câu chuyện chuyển hóa', icon: '📖', duration: '30 phút', videoId: 'VIDEO_ID_11',
+    quiz: [
+      { q: 'Câu chuyện chuyển hóa cho thấy điều gì?', opts: ['Chỉ có người đặc biệt mới thay đổi được', 'Bất kỳ ai cũng có thể chuyển hóa cuộc đời khi sẵn sàng', 'Thay đổi luôn xảy ra nhanh chóng', 'Phải có điều kiện tốt mới thay đổi được'], correct: 1 },
+    ]},
+];
+
+// ============================================================
+// COMPONENTS
+// ============================================================
+
+function ProgressBar({ value, max }) {
+  const pct = Math.round((value / max) * 100);
+  return (
+    <div className="w-full bg-rni-100 rounded-full h-2.5">
+      <div className="progress-bar bg-gradient-to-r from-rni-600 to-gold-500 h-2.5 rounded-full" style={{ width: `${pct}%` }} />
+    </div>
+  );
+}
+
+function Button({ children, onClick, variant = 'primary', size = 'md', disabled = false, className = '' }) {
+  const base = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all focus:outline-none active:scale-95';
+  const variants = {
+    primary: 'bg-rni-600 text-white hover:bg-rni-700 shadow-lg hover:shadow-xl',
+    secondary: 'bg-white text-rni-600 border-2 border-rni-200 hover:border-rni-400 hover:bg-rni-50',
+    gold: 'bg-gradient-to-r from-gold-500 to-gold-400 text-white hover:shadow-lg shadow-md',
+    ghost: 'text-rni-600 hover:bg-rni-50',
+  };
+  const sizes = { sm: 'px-4 py-2 text-sm', md: 'px-6 py-3 text-sm', lg: 'px-8 py-4 text-base' };
+  return (
+    <button onClick={onClick} disabled={disabled}
+      className={`${base} ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${className}`}>
+      {children}
+    </button>
+  );
+}
+
+// ============================================================
+// REGISTER SCREEN
+// ============================================================
+function RegisterScreen({ onRegister }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [loadTime] = useState(Date.now());
+  const canSubmit = name.trim().length >= 2 && email.includes('@');
+
+  const handleSubmit = () => {
+    if (!canSubmit) return;
+    if (Date.now() - loadTime < 3000) return; // bot check
+    submitToKajabi(name.trim(), email.trim());
+    onRegister(name.trim(), email.trim());
+  };
+
+  return (
+    <div className="min-h-screen hero-bg flex flex-col">
+      <div className="flex-1 flex items-center justify-center px-4 py-12">
+        <div className="max-w-md w-full slide-up">
+          <div className="text-center mb-8">
+            <div className="text-4xl mb-3 float">🏮</div>
+            <h1 className="font-display text-4xl sm:text-5xl font-bold text-gray-900 mb-2 leading-tight">
+              Thiết Kế<br/><span className="rni-gradient">Cuộc Đời</span>
+            </h1>
+            <p className="text-gray-500 text-sm mt-3">Khoá học miễn phí từ Học viện RNI</p>
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <a href="https://www.facebook.com/IamRubyNguyen" target="_blank" rel="noopener" className="text-rni-600 hover:text-rni-700 transition-colors text-lg" title="Facebook">📘</a>
+              <a href="https://www.youtube.com/@RubyNguyenInspirer" target="_blank" rel="noopener" className="text-red-500 hover:text-red-600 transition-colors text-lg" title="YouTube">📺</a>
+              <a href="https://www.rni.institute/" target="_blank" rel="noopener" className="text-rni-600 hover:text-rni-700 transition-colors text-lg" title="RNI Institute">🌐</a>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg border border-rni-100 p-6 sm:p-8 space-y-5">
+            <div className="text-center">
+              <p className="text-gray-600 text-sm leading-relaxed">
+                11 bài học video · Bài tập thực hành · Chứng chỉ hoàn thành
+              </p>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Họ và tên</label>
+              <input type="text" value={name} onChange={e => setName(e.target.value)}
+                placeholder="Nguyễn Văn A"
+                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-sm focus:ring-2 focus:ring-rni-500 focus:border-rni-500 transition-all" />
+              <p className="text-xs text-amber-600 mt-1">⚠️ Họ tên sẽ được hiển thị trên chứng chỉ khi hoàn thành khoá học.</p>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)}
+                placeholder="email@example.com"
+                className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-sm focus:ring-2 focus:ring-rni-500 focus:border-rni-500 transition-all" />
+            </div>
+            <Button onClick={handleSubmit} disabled={!canSubmit} size="lg" className={`w-full ${canSubmit ? 'pulse-glow' : ''}`}>
+              Bắt đầu học miễn phí 🎉
+            </Button>
+            <p className="text-xs text-gray-400 text-center">Miễn phí · Không cần thẻ tín dụng</p>
+          </div>
+        </div>
+      </div>
+      <footer className="pb-4 px-4 text-center">
+        <div className="flex items-center justify-center gap-3 text-xs text-gray-400">
+          <span>&copy; Học viện RNI</span>
+          <a href="https://www.rni.institute/" target="_blank" rel="noopener" className="hover:text-rni-600">rni.institute</a>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// ============================================================
+// LESSON VIEW
+// ============================================================
+function LessonView({ lesson, onComplete, onBack }) {
+  const [quizStarted, setQuizStarted] = useState(false);
+  const [currentQ, setCurrentQ] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
+
+  const q = lesson.quiz[currentQ];
+
+  const selectAnswer = (idx) => {
+    if (showAnswer) return;
+    setSelected(idx);
+    setShowAnswer(true);
+    if (idx === q.correct) setScore(s => s + 1);
+  };
+
+  const nextQ = () => {
+    setShowAnswer(false);
+    setSelected(null);
+    if (currentQ < lesson.quiz.length - 1) {
+      setCurrentQ(currentQ + 1);
+    } else {
+      setFinished(true);
+      const pct = Math.round(((score + (selected === q.correct ? 1 : 0)) / lesson.quiz.length) * 100);
+      if (pct >= 60) onComplete();
+    }
+  };
+
+  const finalScore = Math.round(((score) / lesson.quiz.length) * 100);
+  const passed = finalScore >= 60;
+
+  return (
+    <div className="fade-in max-w-3xl mx-auto">
+      <button onClick={onBack} className="flex items-center gap-2 text-rni-600 hover:text-rni-700 mb-6 text-sm font-semibold">
+        ← Quay lại danh sách
+      </button>
+
+      <div className="bg-white rounded-2xl shadow-lg border border-rni-100 overflow-hidden mb-6">
+        <div className="bg-rni-600 px-6 py-5 text-white">
+          <div className="text-3xl mb-2">{lesson.icon}</div>
+          <h2 className="font-display text-xl sm:text-2xl font-bold">Bài {lesson.id}: {lesson.title}</h2>
+          <p className="text-white/70 text-sm mt-1">⏱ {lesson.duration}</p>
+        </div>
+
+        {/* Video */}
+        <div className="p-4 sm:p-6">
+          <div className="video-container bg-gray-100">
+            <iframe
+              src={`https://www.youtube.com/embed/${lesson.videoId}`}
+              title={lesson.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Quiz Section */}
+      {!quizStarted && !finished && (
+        <div className="bg-white rounded-2xl shadow-sm border border-rni-100 p-6 text-center fade-in">
+          <div className="text-3xl mb-3">📝</div>
+          <h3 className="font-bold text-lg mb-2">Bài tập kiểm tra</h3>
+          <p className="text-gray-500 text-sm mb-4">Trả lời đúng để mở khoá bài tiếp theo</p>
+          <Button onClick={() => setQuizStarted(true)}>Bắt đầu kiểm tra →</Button>
+        </div>
+      )}
+
+      {quizStarted && !finished && (
+        <div className="bg-white rounded-2xl shadow-sm border border-rni-100 p-6 fade-in">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-semibold text-rni-600 bg-rni-50 px-3 py-1 rounded-full">
+              Câu {currentQ + 1}/{lesson.quiz.length}
+            </span>
+          </div>
+          <h4 className="font-bold text-base mb-4">{q.q}</h4>
+          <div className="space-y-3">
+            {q.opts.map((opt, i) => (
+              <button key={i} onClick={() => selectAnswer(i)}
+                className={`w-full text-left p-4 rounded-xl border-2 text-sm transition-all ${
+                  showAnswer
+                    ? i === q.correct ? 'border-green-400 bg-green-50' : i === selected ? 'border-red-400 bg-red-50' : 'border-gray-200 opacity-50'
+                    : 'border-gray-200 hover:border-rni-300 hover:bg-rni-50'
+                }`}>
+                <div className="flex items-center gap-3">
+                  <span className={`w-7 h-7 rounded-full border-2 flex items-center justify-center text-xs font-bold flex-shrink-0 ${
+                    showAnswer
+                      ? i === q.correct ? 'border-green-500 bg-green-500 text-white' : i === selected ? 'border-red-500 bg-red-500 text-white' : 'border-gray-300'
+                      : 'border-gray-300'
+                  }`}>{String.fromCharCode(65 + i)}</span>
+                  <span>{opt}</span>
+                </div>
+              </button>
+            ))}
+          </div>
+          {showAnswer && (
+            <div className="mt-4">
+              <div className={`rounded-xl p-3 mb-3 text-sm ${selected === q.correct ? 'bg-green-50 text-green-700' : 'bg-amber-50 text-amber-700'}`}>
+                {selected === q.correct ? '✅ Chính xác!' : `❌ Đáp án đúng: ${q.opts[q.correct]}`}
+              </div>
+              <Button onClick={nextQ} className="w-full">
+                {currentQ < lesson.quiz.length - 1 ? 'Câu tiếp theo →' : 'Xem kết quả'}
+              </Button>
+            </div>
+          )}
+        </div>
+      )}
+
+      {finished && (
+        <div className="bg-white rounded-2xl shadow-sm border border-rni-100 p-6 text-center fade-in">
+          <div className={`w-20 h-20 rounded-full mx-auto mb-3 flex items-center justify-center text-2xl font-bold ${passed ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
+            {passed ? '✅' : '🔄'}
+          </div>
+          <h3 className="font-bold text-lg mb-1">{passed ? 'Đã vượt qua!' : 'Cần ôn lại'}</h3>
+          <p className="text-gray-500 text-sm mb-4">
+            {passed ? 'Bài tiếp theo đã được mở khoá!' : 'Xem lại video và thử lại nhé.'}
+          </p>
+          {passed ? (
+            <Button onClick={onBack}>← Quay lại danh sách</Button>
+          ) : (
+            <Button variant="secondary" onClick={() => { setQuizStarted(false); setCurrentQ(0); setSelected(null); setShowAnswer(false); setScore(0); setFinished(false); }}>
+              🔄 Làm lại bài kiểm tra
+            </Button>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+function Dashboard({ userName, progress, onSelectLesson, onViewCert }) {
+  const completed = LESSONS.filter(l => progress[l.id]).length;
+  const allDone = completed === LESSONS.length;
+
+  return (
+    <div className="fade-in">
+      {/* Header */}
+      <div className="bg-white border-b border-rni-100 sticky top-0 z-10">
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-lg">🏮</span>
+            <h1 className="font-display text-base font-bold text-gray-900">Thiết Kế Cuộc Đời</h1>
+          </div>
+          <div className="text-sm font-semibold text-rni-600">{completed}/{LESSONS.length} bài</div>
+        </div>
+        <div className="max-w-3xl mx-auto px-4 pb-2">
+          <ProgressBar value={completed} max={LESSONS.length} />
+        </div>
+      </div>
+
+      <div className="max-w-3xl mx-auto px-4 py-6">
+        {/* Welcome */}
+        <div className="mb-6 fade-in">
+          <h2 className="font-display text-xl font-bold text-gray-900 mb-1">Xin chào, {userName}! 👋</h2>
+          <p className="text-gray-500 text-sm">Tiếp tục hành trình thiết kế cuộc đời của bạn.</p>
+        </div>
+
+        {/* All complete banner */}
+        {allDone && (
+          <div className="bg-rni-600 rounded-2xl p-5 text-white mb-6 flex items-center justify-between flex-wrap gap-3 bounce-in">
+            <div>
+              <h3 className="font-bold text-lg">🎉 Chúc mừng bạn đã hoàn thành!</h3>
+              <p className="text-white/80 text-sm">Nhận chứng chỉ và khám phá chương trình chuyên sâu.</p>
+            </div>
+            <Button variant="gold" onClick={onViewCert}>Xem Chứng Chỉ 🏆</Button>
+          </div>
+        )}
+
+        {/* Lesson list */}
+        <div className="space-y-3">
+          {LESSONS.map((lesson, i) => {
+            const isComplete = progress[lesson.id];
+            const isLocked = i > 0 && !progress[LESSONS[i - 1].id];
+            const isCurrent = !isComplete && !isLocked;
+
+            return (
+              <button key={lesson.id}
+                onClick={() => { if (!isLocked) onSelectLesson(lesson); }}
+                disabled={isLocked}
+                className={`w-full bg-white rounded-xl border-2 p-4 text-left transition-all ${
+                  isLocked ? 'opacity-40 cursor-not-allowed border-gray-200'
+                  : isComplete ? 'border-green-200 card-hover cursor-pointer'
+                  : 'border-rni-200 card-hover cursor-pointer'
+                }`}>
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0 ${
+                    isComplete ? 'bg-green-100' : isLocked ? 'bg-gray-100' : 'bg-rni-50'
+                  }`}>
+                    {isLocked ? '🔒' : isComplete ? '✅' : lesson.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`font-semibold text-sm ${isCurrent ? 'text-rni-600' : 'text-gray-900'}`}>
+                      Bài {lesson.id}: {lesson.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs mt-0.5">⏱ {lesson.duration}</p>
+                  </div>
+                  <div className="text-gray-300 text-lg flex-shrink-0">
+                    {isComplete ? <span className="text-green-500 text-sm font-semibold">Hoàn thành</span> : '→'}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-10 pb-4 text-center">
+          <div className="flex items-center justify-center gap-3 text-xs text-gray-400">
+            <span>&copy; Học viện RNI</span>
+            <a href="https://www.rni.institute/" target="_blank" rel="noopener" className="hover:text-rni-600">rni.institute</a>
+            <a href="https://www.facebook.com/IamRubyNguyen" target="_blank" rel="noopener" className="hover:text-rni-600">Facebook</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// CERTIFICATE + CTA
+// ============================================================
+function CertificateScreen({ userName, onBack }) {
+  const date = new Date().toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  return (
+    <div className="min-h-screen hero-bg py-8 px-4">
+      <div className="max-w-2xl mx-auto">
+        <button onClick={onBack} className="flex items-center gap-2 text-rni-600 hover:text-rni-700 mb-6 text-sm font-semibold no-print">
+          ← Quay lại
+        </button>
+
+        {/* Certificate */}
+        <div className="bg-white rounded-2xl border-2 border-rni-200 shadow-lg overflow-hidden mb-8">
+          <div className="bg-rni-600 h-2"></div>
+          <div className="p-8 sm:p-12 text-center">
+            <div className="text-4xl mb-3">🏮</div>
+            <p className="text-xs text-rni-600 font-semibold tracking-widest uppercase mb-4">Học viện RNI</p>
+            <h2 className="font-display text-3xl font-bold text-gray-900 mb-2">Chứng Chỉ Hoàn Thành</h2>
+            <div className="w-20 h-0.5 bg-rni-600 mx-auto mb-6"></div>
+            <p className="text-gray-500 text-sm mb-2">Chứng nhận</p>
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-rni-600 mb-2">{userName}</h3>
+            <p className="text-gray-500 text-sm mb-1">đã hoàn thành khoá học</p>
+            <h4 className="font-display text-xl font-bold text-gray-800 mb-6">Thiết Kế Cuộc Đời</h4>
+            <div className="flex justify-center gap-8 my-6 text-center">
+              <div><div className="text-2xl font-bold text-rni-600">11</div><div className="text-xs text-gray-500">Bài học</div></div>
+              <div><div className="text-2xl font-bold text-gold-500">11</div><div className="text-xs text-gray-500">Bài kiểm tra</div></div>
+            </div>
+            <div className="w-20 h-0.5 bg-rni-200 mx-auto mb-6"></div>
+            <div className="mb-2">
+              <p className="text-sm font-semibold text-gray-700">Học viện RNI</p>
+              <div className="w-24 h-px bg-gray-300 mx-auto mt-1 mb-1"></div>
+              <p className="text-xs text-gray-400">Cấp bởi</p>
+            </div>
+            <p className="text-gray-400 text-sm mt-4">{date}</p>
+          </div>
+          <div className="bg-rni-600 h-2"></div>
+        </div>
+
+        {/* Print button */}
+        <div className="text-center mb-10 no-print">
+          <Button onClick={() => window.print()}>🖨️ In Chứng Chỉ</Button>
+        </div>
+
+        {/* CTA - Next programs */}
+        <div className="no-print">
+          <h3 className="font-display text-xl font-bold text-gray-900 text-center mb-2">🚀 Tiếp tục hành trình</h3>
+          <p className="text-gray-500 text-sm text-center mb-6">Khám phá các chương trình chuyên sâu để đi xa hơn</p>
+
+          <div className="space-y-4">
+            {[
+              { title: 'Khai Vấn Tỉnh Thức', desc: 'Đào sâu vào hành trình tỉnh thức và khai vấn bản thân', url: 'https://www.rni.institute/mindful-coach', icon: '🧘' },
+              { title: 'Thiết Kế Cuộc Đời Chuyên Sâu', desc: 'Phiên bản nâng cao với hướng dẫn cá nhân hóa', url: 'https://www.rni.institute/thiet-ke-cuoc-doi', icon: '🎯' },
+              { title: 'Tiếng Nói Từ Tâm Chuyên Sâu', desc: 'Tìm lại tiếng nói đích thực từ sâu bên trong', url: 'https://www.rni.institute/tieng-noi-tu-tam-chuyen-sau', icon: '💎' },
+            ].map((p, i) => (
+              <a key={i} href={p.url} target="_blank" rel="noopener"
+                className="block bg-white rounded-xl border-2 border-rni-100 p-5 card-hover hover:border-rni-300 transition-all">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-rni-50 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">{p.icon}</div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-gray-900 text-sm">{p.title}</h4>
+                    <p className="text-gray-500 text-xs mt-0.5">{p.desc}</p>
+                  </div>
+                  <span className="text-rni-600 font-bold text-sm">Tìm hiểu →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <footer className="mt-10 pb-4 text-center no-print">
+          <div className="flex items-center justify-center gap-3 text-xs text-gray-400">
+            <span>&copy; Học viện RNI</span>
+            <a href="https://www.rni.institute/" target="_blank" rel="noopener" className="hover:text-rni-600">rni.institute</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// MAIN APP
+// ============================================================
+function App() {
+  const [screen, setScreen] = useState('register');
+  const [userName, setUserName] = useState('');
+  const [activeLesson, setActiveLesson] = useState(null);
+  const [progress, setProgress] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('rni-progress') || '{}'); } catch { return {}; }
+  });
+
+  useEffect(() => { localStorage.setItem('rni-progress', JSON.stringify(progress)); }, [progress]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('rni-user-name');
+    if (saved) { setUserName(saved); setScreen('dashboard'); }
+  }, []);
+
+  const handleRegister = (name, email) => {
+    setUserName(name);
+    localStorage.setItem('rni-user-name', name);
+    localStorage.setItem('rni-user-email', email);
+    setScreen('dashboard');
+  };
+
+  const handleCompleteLesson = (lessonId) => {
+    setProgress(prev => ({ ...prev, [lessonId]: true }));
+  };
+
+  if (screen === 'register') {
+    return <RegisterScreen onRegister={handleRegister} />;
+  }
+
+  if (screen === 'certificate') {
+    return <CertificateScreen userName={userName} onBack={() => setScreen('dashboard')} />;
+  }
+
+  if (screen === 'lesson' && activeLesson) {
+    return (
+      <div className="min-h-screen hero-bg py-6 px-4">
+        <LessonView
+          lesson={activeLesson}
+          onComplete={() => handleCompleteLesson(activeLesson.id)}
+          onBack={() => { setActiveLesson(null); setScreen('dashboard'); }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen hero-bg">
+      <Dashboard
+        userName={userName}
+        progress={progress}
+        onSelectLesson={(l) => { setActiveLesson(l); setScreen('lesson'); }}
+        onViewCert={() => setScreen('certificate')}
+      />
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
