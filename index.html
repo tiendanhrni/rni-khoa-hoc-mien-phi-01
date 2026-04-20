@@ -421,27 +421,116 @@ function RegisterScreen({onDone}) {
   );
 }
 
-// ── LESSON VIEW (Video + Tabs: Trắc nghiệm | Thực hành) ──────────────────────
+// ── WELCOME SCREEN ────────────────────────────────────────────────────────────
+function WelcomeScreen({userName, onStart}) {
+  return (
+    <div className="min-h-screen hero-bg flex flex-col">
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <svg className="dandelion absolute -right-10 top-20 w-72 h-72" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="7" fill="#9b1106"/>
+          {[...Array(24)].map((_,i)=>{
+            const a=(i/24)*Math.PI*2,r=60,x=100+Math.cos(a)*r,y=100+Math.sin(a)*r;
+            return <g key={i}><line x1="100" y1="100" x2={x} y2={y} stroke="#9b1106" strokeWidth="0.5" opacity="0.4"/>
+              <circle cx={x} cy={y} r="3" fill="none" stroke="#9b1106" strokeWidth="0.5" opacity="0.5"/>
+              <line x1={x} y1={y} x2={100+Math.cos(a)*r*1.3} y2={100+Math.sin(a)*r*1.3} stroke="#9b1106" strokeWidth="0.4" opacity="0.2"/></g>;
+          })}
+        </svg>
+        <svg className="dandelion absolute -left-10 bottom-32 w-56 h-56" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="5" fill="#f59e0b"/>
+          {[...Array(18)].map((_,i)=>{
+            const a=(i/18)*Math.PI*2,r=50,x=100+Math.cos(a)*r,y=100+Math.sin(a)*r;
+            return <g key={i}><line x1="100" y1="100" x2={x} y2={y} stroke="#f59e0b" strokeWidth="0.5" opacity="0.3"/>
+              <circle cx={x} cy={y} r="2.5" fill="none" stroke="#f59e0b" strokeWidth="0.5" opacity="0.4"/></g>;
+          })}
+        </svg>
+      </div>
+
+      <div className="flex-1 flex items-center justify-center px-4 py-12 relative z-10">
+        <div className="max-w-2xl w-full slide-up text-center">
+
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white border border-rni-200 rounded-full px-5 py-2 text-xs font-semibold text-rni-700 shadow-sm mb-8">
+            <span>🌸</span>
+            <span>5 module bài học</span>
+            <span className="text-rni-300">·</span>
+            <span>17 video bài giảng</span>
+            <span className="text-rni-300">·</span>
+            <span>Trắc nghiệm & Thực hành</span>
+          </div>
+
+          {/* Heading */}
+          <h1 className="font-heading text-4xl sm:text-6xl font-black text-gray-900 mb-2 leading-tight">
+            Dưỡng Tâm Cùng
+          </h1>
+          <h2 className="font-heading text-3xl sm:text-5xl font-black mb-6 leading-tight">
+            <span className="rni-text-gradient">Khai Vấn Tỉnh Thức</span>
+          </h2>
+          <p className="text-gray-500 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+            Hành trình trở về với chính mình — để sống trọn vẹn, làm chủ nội tâm và thiết kế cuộc đời theo cách riêng của bạn.
+          </p>
+
+          {/* 3 feature cards */}
+          <div className="grid sm:grid-cols-3 gap-4 mb-10 text-left">
+            {[
+              { icon:'🏮', title:'Kiến thức từ Cô Ruby Nguyen', desc:'Bài giảng chắt lọc từ hành trình khai vấn tỉnh thức thực tế, gần gũi và sâu sắc.' },
+              { icon:'✍️', title:'Học kết hợp thực hành', desc:'Mỗi bài có câu hỏi trắc nghiệm và bài tập thực hành để nội hóa kiến thức vào cuộc sống.' },
+              { icon:'🌱', title:'Áp dụng ngay vào cuộc sống', desc:'Những dịch chuyển nhận thức nhỏ mỗi ngày sẽ tạo ra sự thay đổi lớn từ bên trong.' },
+            ].map((f,i)=>(
+              <div key={i} className="bg-white rounded-2xl border border-rni-100 p-5 shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-3">{f.icon}</div>
+                <h3 className="font-semibold text-gray-800 text-sm mb-1">{f.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <Btn onClick={onStart} size="lg" className="pulse-btn px-12 text-base">
+            Bắt đầu nào! 🌸
+          </Btn>
+          <p className="text-gray-400 text-xs mt-3">Xin chào, <strong>{userName}</strong> — hành trình của bạn bắt đầu từ đây</p>
+        </div>
+      </div>
+
+      <footer className="pb-5 px-4 text-center relative z-10">
+        <div className="flex items-center justify-center gap-4 text-xs text-gray-400">
+          <span>© Học viện RNI</span>
+          <a href="https://www.rni.institute/" target="_blank" rel="noopener" className="hover:text-rni-600">rni.institute</a>
+          <a href="https://www.facebook.com/IamRubyNguyen" target="_blank" rel="noopener" className="hover:text-rni-600">Facebook</a>
+          <a href="https://www.youtube.com/@RubyNguyenInspirer" target="_blank" rel="noopener" className="hover:text-rni-600">YouTube</a>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// ── LESSON VIEW ───────────────────────────────────────────────────────────────
+const CHEER_CORRECT = ['🌟 Tuyệt vời! Bạn hiểu rất sâu sắc!','✨ Chính xác! Trí tuệ nội tại của bạn đang sáng lên đó!','🌸 Xuất sắc! Bạn đang trên con đường đúng rồi!','💡 Đúng rồi! Sự hiểu biết này sẽ thay đổi cuộc sống của bạn!','🎯 Hoàn hảo! Bạn thực sự lắng nghe và tiếp thu rất tốt!'];
+const CHEER_WRONG   = ['💪 Không sao cả! Mỗi lần thử là một bước học hỏi.','🌱 Đây chính là cơ hội để bạn khám phá thêm — hãy xem lại nhé!','🔄 Học qua sai lầm là cách học sâu nhất. Bạn đang làm tốt!','💗 Đừng nản lòng — ngọn hải đăng bên trong bạn vẫn đang sáng!'];
+const rnd = arr => arr[Math.floor(Math.random()*arr.length)];
+
 function LessonView({lesson, progress, onComplete, onBack}) {
-  const [tab, setTab] = useState('video');
-  const [qIdx, setQIdx]   = useState(0);
-  const [sel, setSel]     = useState(null);
-  const [shown, setShown] = useState(false);
+  const [tab, setTab]       = useState('video');
+  const [qIdx, setQIdx]     = useState(0);
+  const [sel, setSel]       = useState(null);
+  const [shown, setShown]   = useState(false);
   const [correct, setCorrect] = useState(0);
   const [quizDone, setQuizDone] = useState(false);
+  const [cheer, setCheer]   = useState('');
   const alreadyDone = !!progress[lesson.id];
 
   const q = lesson.quiz[qIdx];
 
   const pick = (i) => {
     if(shown) return;
-    setSel(i);
-    setShown(true);
-    if(i===q.correct) setCorrect(c=>c+1);
+    setSel(i); setShown(true);
+    const isRight = i===q.correct;
+    if(isRight) setCorrect(c=>c+1);
+    setCheer(rnd(isRight ? CHEER_CORRECT : CHEER_WRONG));
   };
 
   const nextQ = () => {
-    setShown(false); setSel(null);
+    setShown(false); setSel(null); setCheer('');
     if(qIdx < lesson.quiz.length-1) { setQIdx(qIdx+1); }
     else {
       setQuizDone(true);
@@ -450,80 +539,118 @@ function LessonView({lesson, progress, onComplete, onBack}) {
     }
   };
 
-  const finalScore = lesson.quiz.length>0 ? Math.round(((correct)/lesson.quiz.length)*100) : 100;
-  const passed = finalScore>=50;
+  const lastCorrect = correct + (sel===q?.correct ? 1 : 0);
+  const finalScore  = lesson.quiz.length>0 ? Math.round((lastCorrect/lesson.quiz.length)*100) : 100;
+  const passed      = finalScore>=50;
 
-  const resetQuiz = () => {
-    setQIdx(0); setSel(null); setShown(false); setCorrect(0); setQuizDone(false);
-  };
+  const resetQuiz = () => { setQIdx(0); setSel(null); setShown(false); setCorrect(0); setQuizDone(false); setCheer(''); };
+
+  // find module this lesson belongs to
+  const mod = MODULES.find(m=>m.lessons.some(l=>l.id===lesson.id));
+  const modIcon = mod?.icon || '🌸';
 
   return (
     <div className="min-h-screen hero-bg">
+      {/* Top bar */}
       <div className="bg-white border-b border-rni-100 sticky top-0 z-20 no-print">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center gap-3">
-          <button onClick={onBack} className="text-rni-600 hover:text-rni-700 transition-colors p-1 rounded-lg hover:bg-rni-50">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
+          <button onClick={onBack} className="flex items-center gap-1.5 text-rni-600 hover:text-rni-700 transition-colors text-sm font-semibold">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
+            Quay lại danh sách
           </button>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs text-rni-600 font-semibold truncate">{lesson.title}</p>
-          </div>
-          {alreadyDone && <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold flex-shrink-0">✅ Hoàn thành</span>}
+          {alreadyDone && <span className="ml-auto text-xs bg-green-100 text-green-700 px-2.5 py-1 rounded-full font-semibold">✅ Đã hoàn thành</span>}
         </div>
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-6 fade-in">
-        {/* Tabs */}
-        <div className="flex border-b border-gray-200 mb-5">
-          {[['video','📽 Video'],['quiz','📝 Trắc nghiệm'],['practice','🌱 Thực hành']].map(([k,label])=>(
+
+        {/* Lesson header banner */}
+        <div className="bg-gradient-to-r from-rni-700 via-rni-600 to-rni-500 rounded-2xl p-6 mb-6 text-white relative overflow-hidden shadow-lg">
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/10 text-8xl font-black select-none">{modIcon}</div>
+          <p className="text-white/70 text-xs font-semibold mb-1 uppercase tracking-wider">Module {mod?.id} · {mod?.title}</p>
+          <h2 className="font-heading text-xl sm:text-2xl font-bold leading-snug relative z-10">{lesson.title}</h2>
+        </div>
+
+        {/* Big Tab Buttons */}
+        <div className="grid grid-cols-3 gap-3 mb-6">
+          {[
+            { k:'video',    icon:'📽', label:'Video',       sublabel:'Bài giảng' },
+            { k:'quiz',     icon:'📝', label:'Trắc nghiệm', sublabel:'Kiểm tra hiểu biết' },
+            { k:'practice', icon:'🌱', label:'Thực hành',   sublabel:'Áp dụng ngay' },
+          ].map(({k,icon,label,sublabel})=>(
             <button key={k} onClick={()=>setTab(k)}
-              className={`px-5 py-3 text-sm font-semibold transition-all ${tab===k?'tab-active':'tab-inactive hover:text-gray-600'}`}>
-              {label}
+              className={`rounded-2xl p-4 text-center transition-all border-2 ${
+                tab===k
+                  ? 'bg-rni-600 border-rni-600 text-white shadow-lg scale-[1.02]'
+                  : 'bg-white border-gray-200 text-gray-500 hover:border-rni-300 hover:text-rni-600'
+              }`}>
+              <div className="text-2xl mb-1">{icon}</div>
+              <div className={`font-bold text-sm ${tab===k?'text-white':'text-gray-700'}`}>{label}</div>
+              <div className={`text-xs mt-0.5 ${tab===k?'text-white/75':'text-gray-400'}`}>{sublabel}</div>
             </button>
           ))}
         </div>
 
-        {/* VIDEO TAB */}
+        {/* ── VIDEO TAB ── */}
         {tab==='video' && (
-          <div className="fade-in">
-            {lesson.videoId ? (
-              <div className="video-wrap shadow-lg mb-4">
-                <iframe src={`https://www.youtube.com/embed/${lesson.videoId}`}
-                  title={lesson.title} allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"/>
-              </div>
-            ) : lesson.videoUrl ? (
-              <div className="bg-rni-50 border-2 border-rni-200 rounded-2xl p-8 text-center mb-4">
-                <div className="text-4xl mb-3">🎬</div>
-                <h3 className="font-bold text-gray-800 mb-2">{lesson.title}</h3>
-                <p className="text-gray-500 text-sm mb-5">Video này được lưu trữ trên trang web RNI Institute.</p>
-                <a href={lesson.videoUrl} target="_blank" rel="noopener">
-                  <Btn variant="primary" size="lg">Xem Video →</Btn>
-                </a>
-              </div>
-            ) : (
-              <div className="bg-gray-100 rounded-2xl p-8 text-center mb-4">
-                <div className="text-4xl mb-3">⏳</div>
-                <p className="text-gray-500">Video sẽ được cập nhật sớm.</p>
-              </div>
-            )}
-            <div className="flex justify-end mt-4">
-              <Btn onClick={()=>setTab('quiz')}>Làm bài trắc nghiệm →</Btn>
+          <div className="fade-in space-y-4">
+            <div className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
+              <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                🎬 <strong>Hãy xem toàn bộ video</strong> trước khi chuyển sang phần trắc nghiệm. Cô Ruby Nguyen đã chắt lọc những tinh hoa sâu sắc nhất vào từng bài giảng — bạn sẽ không muốn bỏ lỡ khoảnh khắc nào đâu! ✨
+              </p>
+              {lesson.videoId ? (
+                <div className="video-wrap shadow-md">
+                  <iframe src={`https://www.youtube.com/embed/${lesson.videoId}`}
+                    title={lesson.title} allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"/>
+                </div>
+              ) : lesson.videoUrl ? (
+                <div className="bg-rni-50 border-2 border-rni-200 rounded-2xl p-8 text-center">
+                  <div className="text-4xl mb-3">🎬</div>
+                  <h3 className="font-bold text-gray-800 mb-2">{lesson.title}</h3>
+                  <p className="text-gray-500 text-sm mb-5">Video được lưu trữ trên trang RNI Institute. Nhấn để xem đầy đủ.</p>
+                  <a href={lesson.videoUrl} target="_blank" rel="noopener"><Btn size="lg">Xem Video →</Btn></a>
+                </div>
+              ) : (
+                <div className="bg-gray-100 rounded-2xl p-8 text-center">
+                  <div className="text-4xl mb-3">⏳</div>
+                  <p className="text-gray-500 text-sm">Video đang được chuẩn bị, sẽ cập nhật sớm nhé!</p>
+                </div>
+              )}
+            </div>
+            <div className="flex justify-end">
+              <Btn onClick={()=>setTab('quiz')}>Đã xem xong → Làm trắc nghiệm 📝</Btn>
             </div>
           </div>
         )}
 
-        {/* QUIZ TAB */}
+        {/* ── QUIZ TAB ── */}
         {tab==='quiz' && (
-          <div className="fade-in">
+          <div className="fade-in space-y-4">
+            {/* Intro box */}
+            {!quizDone && qIdx===0 && !shown && (
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+                <h3 className="font-bold text-amber-800 text-base mb-2">📝 Bài trắc nghiệm kiểm tra</h3>
+                <p className="text-amber-700 text-sm leading-relaxed mb-2">
+                  Đây là bước quan trọng giúp bạn <strong>nội hóa kiến thức</strong> từ bài giảng vào tư duy của mình.
+                </p>
+                <ul className="text-amber-700 text-sm space-y-1">
+                  <li>✦ Bài có <strong>{lesson.quiz.length} câu hỏi</strong></li>
+                  <li>✦ Cần đúng <strong>≥ 50%</strong> để mở khoá bài tiếp theo</li>
+                  <li>✦ Có thể làm lại nhiều lần nếu chưa đạt</li>
+                </ul>
+              </div>
+            )}
+
             {!quizDone ? (
               <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-semibold text-rni-600 bg-rni-50 px-3 py-1 rounded-full">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-bold text-rni-600 bg-rni-50 px-3 py-1.5 rounded-full">
                     Câu {qIdx+1} / {lesson.quiz.length}
                   </span>
-                  <span className="text-xs text-gray-400">Đúng ≥ 50% để mở khoá bài tiếp</span>
+                  <span className="text-xs text-gray-400">{correct} đúng · cần ≥ 50%</span>
                 </div>
-                <ProgressBar value={qIdx} max={lesson.quiz.length} className="mb-5"/>
+                <ProgressBar value={qIdx+1} max={lesson.quiz.length} className="mb-5"/>
                 <h4 className="font-semibold text-base text-gray-800 mb-4 leading-relaxed">{q.q}</h4>
                 <div className="space-y-3">
                   {q.opts.map((opt,i)=>(
@@ -532,10 +659,10 @@ function LessonView({lesson, progress, onComplete, onBack}) {
                         shown
                           ? i===q.correct ? 'border-green-400 bg-green-50 font-medium'
                           : i===sel ? 'border-red-400 bg-red-50'
-                          : 'border-gray-200 opacity-50'
+                          : 'border-gray-200 opacity-40'
                           : 'border-gray-200 hover:border-rni-300 hover:bg-rni-50 cursor-pointer'
                       }`}>
-                      <span className={`inline-flex w-6 h-6 rounded-full border-2 mr-3 items-center justify-center text-xs font-bold flex-shrink-0 ${
+                      <span className={`inline-flex w-7 h-7 rounded-full border-2 mr-3 items-center justify-center text-xs font-bold flex-shrink-0 align-middle ${
                         shown
                           ? i===q.correct ? 'border-green-500 bg-green-500 text-white'
                           : i===sel ? 'border-red-500 bg-red-500 text-white'
@@ -547,55 +674,76 @@ function LessonView({lesson, progress, onComplete, onBack}) {
                   ))}
                 </div>
                 {shown && (
-                  <div className="mt-4 space-y-3 fade-in">
-                    <div className={`rounded-xl p-3 text-sm font-medium ${sel===q.correct?'bg-green-50 text-green-700 border border-green-200':'bg-amber-50 text-amber-700 border border-amber-200'}`}>
-                      {sel===q.correct ? '✅ Chính xác!' : `❌ Đáp án đúng: ${q.opts[q.correct]}`}
+                  <div className="mt-5 space-y-3 fade-in">
+                    <div className={`rounded-xl p-4 text-sm font-semibold ${sel===q.correct?'bg-green-50 text-green-800 border border-green-200':'bg-amber-50 text-amber-800 border border-amber-200'}`}>
+                      <div className="mb-1">{cheer}</div>
+                      {sel!==q.correct && <div className="text-xs font-normal mt-1">💡 Đáp án đúng: <strong>{q.opts[q.correct]}</strong></div>}
                     </div>
                     <Btn onClick={nextQ} className="w-full">
-                      {qIdx<lesson.quiz.length-1 ? 'Câu tiếp theo →' : 'Xem kết quả'}
+                      {qIdx<lesson.quiz.length-1 ? 'Câu tiếp theo →' : 'Xem kết quả 🎯'}
                     </Btn>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="text-center fade-in">
-                <div className={`w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-bold font-display shadow-lg ${passed?'bg-green-100 text-green-700':'bg-amber-100 text-amber-700'}`}>
+              <div className="text-center fade-in space-y-5">
+                <div className={`w-28 h-28 rounded-full mx-auto flex items-center justify-center text-3xl font-black shadow-xl ${passed?'bg-gradient-to-br from-green-400 to-green-600 text-white':'bg-gradient-to-br from-amber-400 to-amber-600 text-white'}`}>
                   {finalScore}%
                 </div>
-                <h3 className="font-display text-2xl font-bold mb-2">{passed?'Xuất sắc! 🌸':'Thử lại nhé 🔄'}</h3>
-                <p className="text-gray-500 text-sm mb-6">
-                  {passed ? 'Bạn đã vượt qua bài kiểm tra. Tiếp tục phần thực hành!' : 'Bạn cần đúng ≥ 50%. Xem lại video rồi thử lại nhé.'}
-                </p>
+                <div>
+                  <h3 className="font-heading text-2xl font-bold mb-2">
+                    {passed ? '🌟 Xuất sắc! Bạn đã vượt qua!' : '💪 Gần rồi! Thử lại nha!'}
+                  </h3>
+                  <p className="text-gray-500 text-sm max-w-sm mx-auto">
+                    {passed
+                      ? 'Tuyệt vời lắm! Kiến thức đã thấm sâu vào tư duy của bạn rồi. Hãy tiếp tục với phần thực hành để chuyển hoá nó thành hành động! 🌸'
+                      : 'Không sao cả — mỗi lần làm lại là một lần hiểu sâu hơn. Hãy xem lại video và thử lần nữa nhé! 💗'}
+                  </p>
+                </div>
                 <div className="flex gap-3 justify-center flex-wrap">
                   {passed && <Btn onClick={()=>setTab('practice')}>Đến phần Thực hành 🌱</Btn>}
                   <Btn variant="secondary" onClick={resetQuiz}>🔄 Làm lại</Btn>
-                  {!passed && <Btn variant="ghost" onClick={()=>setTab('video')}>Xem lại video</Btn>}
+                  {!passed && <Btn variant="ghost" onClick={()=>setTab('video')}>📽 Xem lại video</Btn>}
                 </div>
               </div>
             )}
           </div>
         )}
 
-        {/* PRACTICE TAB */}
+        {/* ── PRACTICE TAB ── */}
         {tab==='practice' && (
-          <div className="fade-in">
-            <div className="bg-gradient-to-br from-rni-50 to-amber-50 border border-rni-100 rounded-2xl p-6 mb-5">
-              <h3 className="font-display text-xl font-bold text-rni-600 mb-3">🌱 Hướng dẫn thực hành</h3>
+          <div className="fade-in space-y-4">
+            {/* Intro */}
+            <div className="bg-gradient-to-br from-rni-50 to-amber-50 border border-rni-100 rounded-2xl p-5">
+              <h3 className="font-bold text-rni-700 text-base mb-2">🌱 Thực hành — bước chuyển hoá quan trọng nhất</h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Kiến thức chỉ thực sự trở thành của bạn khi được đưa vào thực tế. Hãy dành vài phút yên tĩnh để thực hành bài tập dưới đây — không cần hoàn hảo, chỉ cần chân thật với chính mình. 💗
+              </p>
+            </div>
+
+            {/* Practice content */}
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-2xl">✍️</span>
+                <h4 className="font-bold text-gray-800">Bài tập thực hành</h4>
+              </div>
               <p className="text-gray-700 leading-relaxed text-sm whitespace-pre-line">{lesson.practice}</p>
             </div>
-            {(alreadyDone || passed) && (
-              <div className="text-center bounce-in">
-                <div className="inline-block bg-green-50 border border-green-200 rounded-2xl px-6 py-4 mb-4">
-                  <div className="text-3xl mb-1">✅</div>
-                  <p className="text-green-700 font-semibold text-sm">Bài học này đã hoàn thành!</p>
+
+            {(alreadyDone || passed) ? (
+              <div className="text-center bounce-in space-y-4">
+                <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6">
+                  <div className="text-4xl mb-3">🎉</div>
+                  <h3 className="font-bold text-green-800 text-lg mb-1">Bạn đã hoàn thành bài học này!</h3>
+                  <p className="text-green-700 text-sm">Mỗi bước nhỏ bạn đi hôm nay đều đang thắp sáng thêm ngọn hải đăng bên trong. Hãy tiếp tục nhé! 🌟</p>
                 </div>
-                <div className="block">
-                  <Btn onClick={onBack}>← Quay lại danh sách bài học</Btn>
-                </div>
+                <Btn onClick={onBack} size="lg">← Tiếp tục hành trình</Btn>
               </div>
-            )}
-            {!alreadyDone && !passed && (
-              <p className="text-center text-sm text-gray-400">Hoàn thành bài trắc nghiệm (≥ 50%) để mở khoá bài tiếp theo.</p>
+            ) : (
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-center">
+                <p className="text-amber-700 text-sm">💡 Hoàn thành bài <strong>trắc nghiệm đạt ≥ 50%</strong> để mở khoá bài tiếp theo.</p>
+                <button onClick={()=>setTab('quiz')} className="mt-2 text-rni-600 text-sm font-semibold hover:underline">Đến phần trắc nghiệm →</button>
+              </div>
             )}
           </div>
         )}
@@ -633,8 +781,8 @@ function Dashboard({userName, progress, onLesson, onCert}) {
       <div className="max-w-3xl mx-auto px-4 py-6">
         {/* Welcome */}
         <div className="mb-6 fade-in">
-          <h2 className="font-display text-2xl font-bold text-gray-900">Xin chào, {userName}! 🌸</h2>
-          <p className="text-gray-500 text-sm mt-1">Tiếp tục hành trình dưỡng tâm của bạn.</p>
+          <h2 className="font-heading text-2xl font-bold text-gray-900">Xin chào, {userName}! 🌸</h2>
+          <p className="text-gray-500 text-sm mt-1">Tiếp tục hành trình khai vấn tỉnh thức dưỡng tâm của bạn.</p>
         </div>
 
         {/* Completed banner */}
@@ -817,12 +965,19 @@ function App() {
 
   useEffect(()=>{
     const n=localStorage.getItem('rni-kvtt-name');
+    // Người dùng cũ đã từng vào → thẳng dashboard (bỏ qua welcome)
     if(n){setUserName(n);setScreen('dashboard');}
   },[]);
 
   const done = (id) => setProgress(p=>({...p,[id]:true}));
 
-  if(screen==='register') return <RegisterScreen onDone={(n,e)=>{setUserName(n);localStorage.setItem('rni-kvtt-name',n);localStorage.setItem('rni-kvtt-email',e);setScreen('dashboard');}}/>;
+  if(screen==='register') return <RegisterScreen onDone={(n,e)=>{
+    setUserName(n);
+    localStorage.setItem('rni-kvtt-name',n);
+    localStorage.setItem('rni-kvtt-email',e);
+    setScreen('welcome'); // → show welcome first
+  }}/>;
+  if(screen==='welcome')  return <WelcomeScreen userName={userName} onStart={()=>setScreen('dashboard')}/>;
   if(screen==='cert')     return <CertScreen userName={userName} onBack={()=>setScreen('dashboard')}/>;
   if(screen==='lesson' && lesson) return <LessonView lesson={lesson} progress={progress} onComplete={done} onBack={()=>{setLesson(null);setScreen('dashboard');}}/>;
 
