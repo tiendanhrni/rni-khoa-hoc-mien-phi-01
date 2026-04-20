@@ -97,7 +97,7 @@ const MODULES = [
           { q: '"Nghịch lý" của thế giới hiện đại được mô tả như thế nào?',
             opts:['Giàu có về tài sản nhưng nghèo nàn về tâm hồn; đầy đủ tiện nghi nhưng kiệt quệ về nội tâm','Có nhiều thời gian nhưng không biết cách sử dụng hiệu quả','Làm việc ít nhưng muốn đạt được thành quả lớn','Có quá nhiều sự lựa chọn dẫn đến không thể quyết định'], correct:0 }
         ],
-        practice: 'Viết ra danh sách 3 thành tựu bên ngoài bạn đã đạt được và tự vấn xem cảm giác hài lòng đó kéo dài trong bao lâu. Sau đó, liệt kê 1 hoạt động giúp bạn cảm thấy bình an từ bên trong mà không phụ thuộc vào vật chất.'
+        practice: { type:'journal', prompt:'Viết ra danh sách 3 thành tựu bên ngoài bạn đã đạt được và tự vấn xem cảm giác hài lòng đó kéo dài trong bao lâu. Sau đó, liệt kê 1 hoạt động giúp bạn cảm thấy bình an từ bên trong mà không phụ thuộc vào vật chất.', placeholder:'Ghi suy nghĩ của bạn ở đây...\n\nVí dụ:\n1. Thành tựu: ... → Cảm giác hài lòng kéo dài: ...\n2. Thành tựu: ... → Cảm giác hài lòng kéo dài: ...\n3. Thành tựu: ... → Cảm giác hài lòng kéo dài: ...\n\nHoạt động bình an từ bên trong: ...' }
       },
       {
         id: '1-2', title: 'Cuộc khủng hoảng niềm tin',
@@ -108,7 +108,7 @@ const MODULES = [
           { q: 'Tại sao các giải pháp bên ngoài thường không giải quyết được sự bất ổn nội tâm?',
             opts:['Vì chúng quá đắt đỏ','Vì chúng giống như "nước muối", chỉ mang lại cảm giác tạm thời và khiến ta thêm kiệt sức về lâu dài','Vì chúng không cung cấp đủ thông tin','Vì xã hội không công nhận các giải pháp đó'], correct:1 }
         ],
-        practice: 'Nhận diện 1 tình huống gần đây bạn cảm thấy mất kiểm soát. Thay vì đi tìm lời khuyên ngay lập tức, hãy dành 15 phút để "quay về bên trong", quan sát trạng thái nội tâm của mình lúc đó.'
+        practice: { type:'journal', prompt:'Nhận diện 1 tình huống gần đây bạn cảm thấy mất kiểm soát. Thay vì đi tìm lời khuyên ngay lập tức, hãy dành 15 phút để "quay về bên trong", quan sát trạng thái nội tâm của mình lúc đó.', placeholder:'Tình huống tôi cảm thấy mất kiểm soát:\n\n\nKhi tôi "quay về bên trong", tôi nhận ra:\n\n\nTrạng thái nội tâm của tôi lúc đó là:\n' }
       },
       {
         id: '1-3', title: 'Khai vấn tỉnh thức — con đường trở về nội tâm',
@@ -119,7 +119,7 @@ const MODULES = [
           { q: 'Trái tim của "Khai vấn tỉnh thức" tại RNI tập trung vào mục tiêu cốt lõi nào?',
             opts:['Cung cấp các câu trả lời định sẵn cho khách hàng','Nuôi dưỡng nội tâm bình an, sáng suốt để làm chủ cuộc sống và khơi dậy trí tuệ nội tại','Giải quyết nhanh các vấn đề thực tế trước mắt','Xây dựng một bản đồ lộ trình sự nghiệp cố định'], correct:1 }
         ],
-        practice: 'Hãy chọn một vấn đề đang làm bạn trăn trở và đặt cho mình một câu hỏi khai vấn: "Nếu tôi có trí tuệ nội tại hoàn hảo, tôi sẽ nhìn nhận vấn đề này như thế nào?"'
+        practice: { type:'journal', prompt:'Hãy chọn một vấn đề đang làm bạn trăn trở và đặt cho mình một câu hỏi khai vấn: "Nếu tôi có trí tuệ nội tại hoàn hảo, tôi sẽ nhìn nhận vấn đề này như thế nào?"', placeholder:'Vấn đề đang làm tôi trăn trở:\n\n\nNếu tôi có trí tuệ nội tại hoàn hảo, tôi sẽ nhìn nhận vấn đề này là:\n\n\nBước nhỏ tôi có thể làm ngay hôm nay:\n' }
       }
     ]
   },
@@ -137,7 +137,7 @@ const MODULES = [
           { q: 'Nguyên tắc "Đừng đóng khung, hãy khai mở" trong khai vấn có nghĩa là gì?',
             opts:['Dán mác mọi sự việc theo tiêu chuẩn đúng/sai','Cố gắng tìm ra lỗi sai của người khác','Nhìn nhận sự việc khách quan, trung tính và mở rộng tư duy để thấy vấn đề không còn là vấn đề','Luôn đồng ý với mọi quan điểm của khách hàng'], correct:2 }
         ],
-        practice: 'Luyện tập "lắng nghe rỗng lặng" trong 5 phút với người thân: lắng nghe mà không giả định, không phán xét và không chuẩn bị lời khuyên trong đầu.'
+        practice: { type:'text', prompt:'Luyện tập "lắng nghe rỗng lặng" trong 5 phút với người thân: lắng nghe mà không giả định, không phán xét và không chuẩn bị lời khuyên trong đầu. Sau khi thực hành xong, hãy tiếp tục bài học tiếp theo.' }
       },
       {
         id: '2-2', title: 'Bài kiểm tra kết nối chính mình',
@@ -148,7 +148,7 @@ const MODULES = [
           { q: '"Vấn đề thực sự" mà nhiều học viên gặp phải là gì?',
             opts:['Thiếu kỹ năng giao tiếp','Chưa thực hiện được "những cuộc dịch chuyển" trong nhận thức để làm chủ tâm trí','Không tìm được người Coach giỏi','Quá bận rộn với công việc hàng ngày'], correct:1 }
         ],
-        practice: 'Làm một bài kiểm tra nhỏ: "Nếu căn phòng nội tâm của bạn là một nơi tối tăm bạn muốn khóa chặt, hãy viết xuống 1 lý do vì sao bạn lại sợ mở cánh cửa đó ra."'
+        practice: { type:'journal', prompt:'Hãy làm một bài kiểm tra nhỏ: "Nếu căn phòng nội tâm của bạn là một nơi tối tăm bạn muốn khóa chặt, hãy viết xuống 1 lý do vì sao bạn lại sợ mở cánh cửa đó ra."', placeholder:'Lý do tôi sợ mở cánh cửa nội tâm:\n\n\nCảm xúc tôi nhận ra khi viết điều này:\n\n\nNếu tôi dũng cảm mở cánh cửa đó, tôi nghĩ tôi sẽ thấy:\n' }
       },
       {
         id: '2-3', title: 'Sự dịch chuyển 1 — Nhận thức về vấn đề',
@@ -159,7 +159,7 @@ const MODULES = [
           { q: 'Câu "thần chú" nào giúp đưa mình về tâm thế bình thản khi đối diện khó khăn?',
             opts:['"Tôi phải giải quyết việc này ngay lập tức."','"Hãy để cuộc sống diễn ra... Tôi tin tưởng trực giác và trí tuệ bên trong luôn dẫn dắt cho tôi."','"Tại sao chuyện này lại xảy ra với tôi?"','"Giá mà mọi chuyện thuận lợi hơn."'], correct:1 }
         ],
-        practice: 'Khi gặp một hiện thực chưa như ý, thay vì phản kháng, hãy dừng lại 1 phút, đọc to 3 câu "thần chú" và tự hỏi: "Tình huống này đang dạy tôi điều gì?"'
+        practice: { type:'journal', prompt:'Khi gặp một hiện thực chưa như ý, thay vì phản kháng, hãy dừng lại 1 phút, đọc to 3 câu "thần chú" và tự hỏi: "Tình huống này đang dạy tôi điều gì?"', placeholder:'Tình huống chưa như ý tôi đang đối diện:\n\n\nSau khi đọc 3 câu thần chú, tôi cảm thấy:\n\n\nTình huống này đang dạy tôi:\n' }
       },
       {
         id: '2-4', title: 'Sự dịch chuyển 2 — Đối thoại với chính mình',
@@ -170,7 +170,7 @@ const MODULES = [
           { q: 'Câu hỏi nào có tác dụng "Self-coach" hiệu quả khi bạn nghĩ "mình không thể làm được"?',
             opts:['"Tại sao mình lại yếu đuối như vậy?"','"Người thành công sẽ làm gì trong lúc này?"','"Đây là sự thực hay chỉ là một suy nghĩ?"','"Mình có nên từ bỏ để bớt áp lực không?"'], correct:2 }
         ],
-        practice: 'Ghi chép lại các cuộc hội thoại nội tâm trong 1 buổi sáng. Nếu thấy suy nghĩ "mình kém cỏi", hãy hỏi ngược lại: "Mình thực sự kém cỏi hay mình đang có trải nghiệm khiến mình cảm thấy chưa trọn vẹn?"'
+        practice: { type:'journal', prompt:'Ghi chép lại các cuộc hội thoại nội tâm trong 1 buổi sáng. Nếu thấy suy nghĩ "mình kém cỏi", hãy hỏi ngược lại: "Mình thực sự kém cỏi hay mình đang có trải nghiệm khiến mình cảm thấy chưa trọn vẹn?"', placeholder:'Các suy nghĩ nội tâm tôi nhận ra sáng nay:\n\n\nKhi tôi đặt câu hỏi "Đây là sự thực hay chỉ là suy nghĩ?", tôi nhận ra:\n\n\nCâu self-talk tích cực tôi muốn thay thế:\n' }
       },
       {
         id: '2-5', title: 'Sự dịch chuyển 3 — Tư duy vượt thoát',
@@ -181,7 +181,7 @@ const MODULES = [
           { q: 'Mọi sự thay đổi thực sự đều đến từ đâu?',
             opts:['Từ các con số vận mệnh của mỗi người','Từ sự tự thân chuyển hóa và nhận lãnh trách nhiệm về chính mình','Từ các công cụ thần kỳ bên ngoài','Từ việc người khác chỉ cho mình phải làm gì'], correct:1 }
         ],
-        practice: 'Chuyển đổi suy nghĩ: "Nếu thất bại thì sao?" sang câu hỏi tự khai vấn: "Tôi đang lo lắng về một điều chưa xảy ra hay tôi đang tập trung vào tiềm năng vô hạn của hiện tại?"'
+        practice: { type:'journal', prompt:'Chuyển đổi suy nghĩ: "Nếu thất bại thì sao?" sang câu hỏi tự khai vấn: "Tôi đang lo lắng về một điều chưa xảy ra hay tôi đang tập trung vào tiềm năng vô hạn của hiện tại?"', placeholder:'Nỗi sợ thất bại tôi đang mang:\n\n\nKhi tôi hỏi "Tôi đang tập trung vào điều gì?", tôi nhận ra:\n\n\nTiềm năng vô hạn của tôi trong hiện tại là:\n' }
       }
     ]
   },
@@ -199,7 +199,7 @@ const MODULES = [
           { q: '"Can đảm" trong nghề Coach được định nghĩa như thế nào?',
             opts:['Luôn biết chắc chắn kết quả của phiên khai vấn','Sẵn lòng bước đi cùng khách hàng ngay cả khi chính mình và họ chưa biết hướng đi kế tiếp','Luôn đưa ra những giải pháp mạnh mẽ','Không bao giờ cảm thấy lo lắng hay sợ hãi'], correct:1 }
         ],
-        practice: 'Viết về một lần bạn dám bước vào một sự "không chắc chắn" trong cuộc sống. Điều gì đã giúp bạn vượt qua sự mơ hồ đó?'
+        practice: { type:'journal', prompt:'Viết về một lần bạn dám bước vào một sự "không chắc chắn" trong cuộc sống. Điều gì đã giúp bạn vượt qua sự mơ hồ đó?', placeholder:'Lần tôi bước vào sự không chắc chắn:\n\n\nNhững gì đã giúp tôi vượt qua:\n\n\nBài học tôi mang theo từ trải nghiệm đó:\n' }
       },
       {
         id: '3-2', title: 'Hành trang cho người khai vấn tỉnh thức',
@@ -210,7 +210,7 @@ const MODULES = [
           { q: '"Hành trang tâm hồn" của một người Coach bao gồm những yếu tố nào?',
             opts:['Chỉ cần nắm vững các kỹ thuật và mô hình','Sự tĩnh tại bên trong, lòng thấu hiểu, kiên nhẫn và một trái tim rộng mở','Sự tự tin tuyệt đối và không bao giờ mắc lỗi','Khả năng thuyết phục khách hàng nghe theo ý mình'], correct:1 }
         ],
-        practice: 'Tự chấm điểm từ 1-10 cho 8 năng lực cốt lõi của EMCC. Chọn ra 1 năng lực thấp nhất và lập kế hoạch cải thiện trong tuần này.'
+        practice: { type:'journal', prompt:'Tự chấm điểm từ 1-10 cho 8 năng lực cốt lõi của EMCC. Chọn ra 1 năng lực thấp nhất và lập kế hoạch cải thiện trong tuần này.', placeholder:'Điểm tự đánh giá 8 năng lực EMCC:\n1. Hiểu biết về bản thân: /10\n2. Cam kết & đạo đức: /10\n3. Xây dựng hợp đồng: /10\n4. Xây dựng mối quan hệ: /10\n5. Lắng nghe tích cực: /10\n6. Đặt câu hỏi hiệu quả: /10\n7. Thiết kế hành động: /10\n8. Đánh giá & đo lường: /10\n\nNăng lực tôi chọn cải thiện tuần này:\n\nKế hoạch cụ thể:\n' }
       },
       {
         id: '3-3', title: 'Xây dựng sự nghiệp mang tên bạn',
@@ -219,7 +219,7 @@ const MODULES = [
           { q: 'Sự thay đổi lớn nhất mà các học viên RNI thường cảm nhận được sau hành trình khai vấn là gì?',
             opts:['Tìm được một công việc lương cao hơn ngay lập tức','Thay đổi cách nhìn nhận chính mình và tìm thấy bình an nội tại','Không còn gặp bất kỳ thử thách nào trong cuộc sống','Trở thành một người hoàn hảo không sai sót'], correct:1 }
         ],
-        practice: 'Ngồi tĩnh lặng và tưởng tượng sự nghiệp của bạn như một dòng suối. Bạn muốn "dòng suối" đó mang lại cảm giác gì (mát lành, mạnh mẽ, hay yên ả) cho những người chạm vào nó?'
+        practice: { type:'text', prompt:'Ngồi tĩnh lặng và tưởng tượng sự nghiệp của bạn như một dòng suối. Bạn muốn "dòng suối" đó mang lại cảm giác gì (mát lành, mạnh mẽ, hay yên ả) cho những người chạm vào nó? Hãy dành vài phút trong tĩnh lặng để cảm nhận hình ảnh đó, rồi tiếp tục bài học tiếp theo.' }
       },
       {
         id: '3-4', title: 'Lộ trình khai vấn tỉnh thức',
@@ -230,7 +230,7 @@ const MODULES = [
           { q: 'Bước Tự phản tư (Reflective Practice) yêu cầu người Coach phải làm gì?',
             opts:['Chỉ cần tham gia các phiên giám sát','Ghi lại nhật ký phản ánh để theo dõi sự phát triển và tương tác của mình với khách hàng','Học thuộc lòng các mô hình khai vấn mới','Luôn yêu cầu khách hàng khen ngợi mình'], correct:1 }
         ],
-        practice: 'Bắt đầu viết "Nhật ký tự phản tư" (Reflective Journal) cho ngày hôm nay. Ghi lại 1 điều bạn đã học được về cách mình phản ứng trước một sự việc trong ngày.'
+        practice: { type:'journal', prompt:'Bắt đầu viết "Nhật ký tự phản tư" (Reflective Journal) cho ngày hôm nay. Ghi lại 1 điều bạn đã học được về cách mình phản ứng trước một sự việc trong ngày.', placeholder:'Sự việc xảy ra hôm nay:\n\n\nCách tôi phản ứng:\n\n\nNếu nhìn lại, tôi sẽ phản ứng khác đi như thế nào:\n\n\nĐiều tôi học được về chính mình:\n' }
       }
     ]
   },
@@ -238,41 +238,46 @@ const MODULES = [
     id: 4,
     title: 'Hỏi Đáp',
     icon: '💬',
+    noPractice: true,
     lessons: [
-      { id:'4-1', title:'Hỏi đáp — Phần 1', videoId:'JJFPVbUm_Qo',
-        quiz:[{q:'Bạn đã xem xong video Hỏi đáp phần 1 chưa?',opts:['Rồi, tôi đã xem xong','Chưa, tôi sẽ xem lại'],correct:0}],
-        practice:'Ghi lại 1 câu hỏi bạn muốn được giải đáp sau khi xem video này.' },
-      { id:'4-2', title:'Hỏi đáp — Phần 2', videoId:'4J7ojdJUcgQ',
-        quiz:[{q:'Bạn đã xem xong video Hỏi đáp phần 2 chưa?',opts:['Rồi, tôi đã xem xong','Chưa, tôi sẽ xem lại'],correct:0}],
-        practice:'Ghi lại 1 điều bạn học được từ phần hỏi đáp này.' },
-      { id:'4-3', title:'Hỏi đáp — Phần 3', videoId:'clEEPmTR4-4',
-        quiz:[{q:'Bạn đã xem xong video Hỏi đáp phần 3 chưa?',opts:['Rồi, tôi đã xem xong','Chưa, tôi sẽ xem lại'],correct:0}],
-        practice:'Ghi lại 1 điều bạn học được từ phần hỏi đáp này.' },
-      { id:'4-4', title:'Hỏi đáp — Phần 4', videoId:'5b3SZ-0pt6E',
-        quiz:[{q:'Bạn đã xem xong video Hỏi đáp phần 4 chưa?',opts:['Rồi, tôi đã xem xong','Chưa, tôi sẽ xem lại'],correct:0}],
-        practice:'Ghi lại 1 điều bạn học được từ phần hỏi đáp này.' }
+      { id:'4-1', title:'Hỏi đáp — Học viên Hoàng Tuyết', videoId:'D3f--MBWKkg',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-2', title:'Hỏi đáp — Học viên Thắm Nguyễn', videoId:'D5Fkf7443qQ',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-3', title:'Hỏi đáp — Học viên Thanh Tâm', videoId:'SZqg9L6-TuQ',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-4', title:'Hỏi đáp — Học viên Hồng Nhung', videoId:'tIw5ZK_9sIQ',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-5', title:'Hỏi đáp — Học viên Tám Nguyễn (Alice)', videoId:'XvsHoZ89woA',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null }
     ]
   },
   {
     id: 5,
     title: 'Câu Chuyện Dưỡng Tâm Cùng Khai Vấn Tỉnh Thức',
     icon: '✨',
+    noPractice: true,
     lessons: [
       { id:'5-1', title:'Câu chuyện của học viên Hoàng Tuyết', videoId:'ao_pazFVjiY',
         quiz:[{q:'Bài học nào từ câu chuyện của học viên Hoàng Tuyết truyền cảm hứng cho bạn nhất?',opts:['Không bao giờ quá muộn để bắt đầu hành trình trở về với chính mình','Cần phải có nhiều kinh nghiệm mới bắt đầu được','Chỉ người trẻ mới có thể học khai vấn','Khai vấn chỉ dành cho người có nhiều thời gian'],correct:0}],
-        practice:'Viết 3 dòng về điều bạn cảm nhận sau khi nghe câu chuyện này.' },
-      { id:'5-2', title:'Câu chuyện của học viên Thắm Nguyễn', videoId:'PLACEHOLDER_5_2',
+        practice:null },
+      { id:'5-2', title:'Câu chuyện của học viên Thắm Nguyễn', videoId:'JJFPVbUm_Qo',
         quiz:[{q:'Điều gì giúp học viên Thắm Nguyễn vượt qua giai đoạn bế tắc?',opts:['Tìm thấy kết nối với bản thân thông qua khai vấn tỉnh thức','Thay đổi công việc ngay lập tức','Tự cô lập bản thân để suy nghĩ','Tìm kiếm sự giúp đỡ từ nhiều người khác'],correct:0}],
-        practice:'Viết 3 dòng về điều bạn cảm nhận sau khi nghe câu chuyện này.' },
-      { id:'5-3', title:'Câu chuyện của học viên Thanh Tâm', videoId:'PLACEHOLDER_5_3',
+        practice:null },
+      { id:'5-3', title:'Câu chuyện của học viên Thanh Tâm', videoId:'4J7ojdJUcgQ',
         quiz:[{q:'Điều gì tạo nên sự khác biệt của chương trình Khai vấn tỉnh thức RNI?',opts:['Kết hợp tỉnh thức nội tâm với kỹ năng coach chuyên nghiệp','Chỉ tập trung vào kỹ thuật coach','Chỉ tập trung vào nội tâm mà không có kỹ năng','Giống như các chương trình coach khác'],correct:0}],
-        practice:'Viết 3 dòng về điều bạn cảm nhận sau khi nghe câu chuyện này.' },
-      { id:'5-4', title:'Câu chuyện của học viên Hồng Nhung', videoId:'PLACEHOLDER_5_4',
+        practice:null },
+      { id:'5-4', title:'Câu chuyện của học viên Hồng Nhung', videoId:'clEEPmTR4-4',
         quiz:[{q:'Điều gì quan trọng hơn tuổi tác và kinh nghiệm để trở thành người coach?',opts:['Sự chân thật, khiêm tốn và sẵn sàng học hỏi','Bằng cấp và chứng chỉ','Kinh nghiệm sống nhiều năm','Mạng lưới khách hàng rộng lớn'],correct:0}],
-        practice:'Viết 3 dòng về điều bạn cảm nhận sau khi nghe câu chuyện này.' },
-      { id:'5-5', title:'Câu chuyện của học viên Tám Nguyễn (Alice)', videoId:'PLACEHOLDER_5_5',
+        practice:null },
+      { id:'5-5', title:'Câu chuyện của học viên Tám Nguyễn (Alice)', videoId:'5b3SZ-0pt6E',
         quiz:[{q:'Khai vấn tỉnh thức hỗ trợ bác sĩ và chuyên gia y tế như thế nào?',opts:['Giúp kết hợp sức mạnh tâm trí với chuyên môn y học để hỗ trợ bệnh nhân toàn diện hơn','Thay thế hoàn toàn phương pháp y học truyền thống','Chỉ dành riêng cho những người không có chuyên môn y tế','Giúp bác sĩ làm việc ít đi'],correct:0}],
-        practice:'Viết 3 dòng về điều bạn cảm nhận sau khi nghe câu chuyện này.' }
+        practice:null }
     ]
   }
 ];
@@ -417,6 +422,64 @@ function RegisterScreen({onDone}) {
           <a href="https://www.youtube.com/@RubyNguyenInspirer" target="_blank" rel="noopener" className="hover:text-rni-600 transition-colors">YouTube</a>
         </div>
       </footer>
+    </div>
+  );
+}
+
+// ── PRACTICE BOX ─────────────────────────────────────────────────────────────
+function PracticeBox({lessonId, practice}) {
+  const storageKey = `rni-journal-${lessonId}`;
+  const [text, setText]     = useState(()=> localStorage.getItem(storageKey) || '');
+  const [saved, setSaved]   = useState(()=> !!localStorage.getItem(storageKey));
+  const [editing, setEditing] = useState(false);
+
+  if(!practice || practice.type==='text') return null; // no journal for type:text
+
+  const handleSave = () => {
+    if(!text.trim()) return;
+    localStorage.setItem(storageKey, text);
+    setSaved(true);
+    setEditing(false);
+  };
+
+  const handleEdit = () => { setEditing(true); setSaved(false); };
+
+  if(saved && !editing) return (
+    <div className="bg-white rounded-2xl border-2 border-green-200 shadow-sm overflow-hidden fade-in">
+      <div className="bg-green-50 px-5 py-3 flex items-center justify-between">
+        <span className="text-sm font-bold text-green-700">✅ Ghi chép của bạn</span>
+        <button onClick={handleEdit}
+          className="text-xs text-green-600 hover:text-green-800 font-semibold border border-green-300 rounded-lg px-3 py-1 hover:bg-green-100 transition-all">
+          ✏️ Chỉnh sửa
+        </button>
+      </div>
+      <div className="px-5 py-4">
+        <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{text}</p>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="bg-white rounded-2xl border-2 border-rni-100 shadow-sm overflow-hidden">
+      <div className="bg-rni-50 px-5 py-3">
+        <span className="text-sm font-bold text-rni-700">✍️ Khung ghi chép của bạn</span>
+        <p className="text-xs text-rni-500 mt-0.5">Viết ra những suy nghĩ chân thật — đây là không gian riêng của bạn.</p>
+      </div>
+      <div className="p-4">
+        <textarea
+          value={text}
+          onChange={e=>setText(e.target.value)}
+          placeholder={practice.placeholder || 'Ghi suy nghĩ của bạn ở đây...'}
+          rows={8}
+          className="w-full rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-gray-700 focus:ring-2 focus:ring-rni-400 focus:border-rni-400 outline-none transition-all resize-none leading-relaxed"
+        />
+        <div className="flex items-center justify-between mt-3">
+          <p className="text-xs text-gray-400">{text.length} ký tự</p>
+          <Btn onClick={handleSave} disabled={!text.trim()} size="sm">
+            Lưu ghi chép ✓
+          </Btn>
+        </div>
+      </div>
     </div>
   );
 }
@@ -713,37 +776,55 @@ function LessonView({lesson, progress, onComplete, onBack}) {
         {/* ── PRACTICE TAB ── */}
         {tab==='practice' && (
           <div className="fade-in space-y-4">
-            {/* Intro */}
-            <div className="bg-gradient-to-br from-rni-50 to-amber-50 border border-rni-100 rounded-2xl p-5">
-              <h3 className="font-bold text-rni-700 text-base mb-2">🌱 Thực hành — bước chuyển hoá quan trọng nhất</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Kiến thức chỉ thực sự trở thành của bạn khi được đưa vào thực tế. Hãy dành vài phút yên tĩnh để thực hành bài tập dưới đây — không cần hoàn hảo, chỉ cần chân thật với chính mình. 💗
-              </p>
-            </div>
-
-            {/* Practice content */}
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">✍️</span>
-                <h4 className="font-bold text-gray-800">Bài tập thực hành</h4>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm whitespace-pre-line">{lesson.practice}</p>
-            </div>
-
-            {(alreadyDone || passed) ? (
-              <div className="text-center bounce-in space-y-4">
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6">
-                  <div className="text-4xl mb-3">🎉</div>
-                  <h3 className="font-bold text-green-800 text-lg mb-1">Bạn đã hoàn thành bài học này!</h3>
-                  <p className="text-green-700 text-sm">Mỗi bước nhỏ bạn đi hôm nay đều đang thắp sáng thêm ngọn hải đăng bên trong. Hãy tiếp tục nhé! 🌟</p>
-                </div>
-                <Btn onClick={onBack} size="lg">← Tiếp tục hành trình</Btn>
+            {/* Module 4 & 5: không có thực hành */}
+            {(!lesson.practice) ? (
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-center">
+                <div className="text-3xl mb-3">🎬</div>
+                <h3 className="font-bold text-amber-800 mb-2">Module này không có phần thực hành</h3>
+                <p className="text-amber-700 text-sm mb-4">Hãy xem video và hoàn thành trắc nghiệm để mở khoá bài tiếp theo nhé!</p>
+                <Btn variant="secondary" onClick={()=>setTab('quiz')}>Đến phần trắc nghiệm →</Btn>
               </div>
             ) : (
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-center">
-                <p className="text-amber-700 text-sm">💡 Hoàn thành bài <strong>trắc nghiệm đạt ≥ 50%</strong> để mở khoá bài tiếp theo.</p>
-                <button onClick={()=>setTab('quiz')} className="mt-2 text-rni-600 text-sm font-semibold hover:underline">Đến phần trắc nghiệm →</button>
-              </div>
+              <>
+                {/* Intro */}
+                {lesson.practice.type !== 'text' && (
+                  <div className="bg-gradient-to-br from-rni-50 to-amber-50 border border-rni-100 rounded-2xl p-5">
+                    <h3 className="font-bold text-rni-700 text-base mb-2">🌱 Thực hành — bước chuyển hoá quan trọng nhất</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Kiến thức chỉ thực sự trở thành của bạn khi được đưa vào thực tế. Hãy dành vài phút yên tĩnh để thực hành bài tập dưới đây — không cần hoàn hảo, chỉ cần chân thật với chính mình. 💗
+                    </p>
+                  </div>
+                )}
+
+                {/* Practice prompt */}
+                <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-2xl">{lesson.practice.type==='text' ? '🧘' : '✍️'}</span>
+                    <h4 className="font-bold text-gray-800">Bài tập thực hành</h4>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed text-sm">{lesson.practice.prompt}</p>
+                </div>
+
+                {/* Journal box (chỉ type journal) */}
+                <PracticeBox lessonId={lesson.id} practice={lesson.practice}/>
+
+                {/* Complete state */}
+                {(alreadyDone || passed) ? (
+                  <div className="text-center bounce-in space-y-4">
+                    <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6">
+                      <div className="text-4xl mb-3">🎉</div>
+                      <h3 className="font-bold text-green-800 text-lg mb-1">Bạn đã hoàn thành bài học này!</h3>
+                      <p className="text-green-700 text-sm">Mỗi bước nhỏ bạn đi hôm nay đều đang thắp sáng thêm ngọn hải đăng bên trong. Hãy tiếp tục nhé! 🌟</p>
+                    </div>
+                    <Btn onClick={onBack} size="lg">← Tiếp tục hành trình</Btn>
+                  </div>
+                ) : (
+                  <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-center">
+                    <p className="text-amber-700 text-sm">💡 Hoàn thành bài <strong>trắc nghiệm đạt ≥ 50%</strong> để mở khoá bài tiếp theo.</p>
+                    <button onClick={()=>setTab('quiz')} className="mt-2 text-rni-600 text-sm font-semibold hover:underline">Đến phần trắc nghiệm →</button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         )}
