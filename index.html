@@ -101,23 +101,22 @@ function ChatButton() {
 
       {open && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{background:'rgba(0,0,0,0.55)'}}
-          onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
+          className="fixed z-50"
+          style={{bottom:'24px', right:'24px', width:'380px', maxWidth:'calc(100vw - 32px)'}}
         >
           <div
-            className="bg-white rounded-2xl shadow-2xl w-full flex flex-col overflow-hidden"
-            style={{maxWidth:'520px', height:'80vh', maxHeight:'700px'}}
+            className="bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            style={{height:'520px', border:'1.5px solid #fecaca'}}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-3 border-b border-gray-100" style={{background:'#9b1106'}}>
+            <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" style={{background:'#9b1106'}}>
               <div className="flex items-center gap-2">
-                <span style={{fontSize:'20px'}}>💬</span>
+                <span style={{fontSize:'18px'}}>💬</span>
                 <span className="text-white font-semibold text-sm">Hỏi đáp về bài học</span>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="text-white font-bold text-xl leading-none hover:opacity-70 transition-opacity"
+                className="text-white font-bold text-xl leading-none hover:opacity-70 transition-opacity w-7 h-7 flex items-center justify-center"
                 aria-label="Đóng"
               >×</button>
             </div>
@@ -371,6 +370,18 @@ const MODULES = [
         practice:null },
       { id:'4-5', title:'Làm thế nào để nuôi dưỡng sự chuyển hóa sau khi rời lớp học?', videoId:'D5Fkf7443qQ',
         quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-6', title:'Ngoài Mindful Coaching RNI còn có chương trình nào đưa khai vấn tỉnh thức vào nữa không?', videoId:'e_4BffK2hhM',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-7', title:'Liệu khai vấn tỉnh thức chuyên sâu của Học viện RNI có phải là giải pháp?', videoId:'GRyj22xf6N8',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-8', title:'Đâu là trọng tâm để người coach chuyên nghiệp cần ưu tiên nắm vững?', videoId:'5umNR8M3R24',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
+        practice:null },
+      { id:'4-9', title:'Liệu khai vấn có cần thiết cho người làm kinh doanh muốn phát triển doanh nghiệp?', videoId:'k69ICOGTENw',
+        quiz:[{q:'Bạn đã xem xong video hỏi đáp này chưa?',opts:['Rồi, tôi đã xem xong và có thêm hiểu biết mới','Chưa, tôi sẽ xem lại'],correct:0}],
         practice:null }
     ]
   },
@@ -381,19 +392,19 @@ const MODULES = [
     noPractice: true,
     noPracticeAndQuiz: true,
     lessons: [
-      { id:'5-1', title:'Câu chuyện của học viên Hoàng Tuyết', videoId:'JJFPVbUm_Qo',
-        quiz:[{q:'Bài học nào từ câu chuyện của học viên Hoàng Tuyết truyền cảm hứng cho bạn nhất?',opts:['Không bao giờ quá muộn để bắt đầu hành trình trở về với chính mình','Cần phải có nhiều kinh nghiệm mới bắt đầu được','Chỉ người trẻ mới có thể học khai vấn','Khai vấn chỉ dành cho người có nhiều thời gian'],correct:0}],
+      { id:'5-1', title:'U60 có rào cản công nghệ, công việc bận rộn có phù hợp học phát triển bản thân?', videoId:'JJFPVbUm_Qo',
+        quiz:[{q:'Bài học nào từ câu chuyện này truyền cảm hứng cho bạn nhất?',opts:['Không bao giờ quá muộn để bắt đầu hành trình trở về với chính mình','Cần phải có nhiều kinh nghiệm mới bắt đầu được','Chỉ người trẻ mới có thể học khai vấn','Khai vấn chỉ dành cho người có nhiều thời gian'],correct:0}],
         practice:null },
-      { id:'5-2', title:'Câu chuyện của học viên Thắm Nguyễn', videoId:'4J7ojdJUcgQ',
-        quiz:[{q:'Điều gì giúp học viên Thắm Nguyễn vượt qua giai đoạn bế tắc?',opts:['Tìm thấy kết nối với bản thân thông qua khai vấn tỉnh thức','Thay đổi công việc ngay lập tức','Tự cô lập bản thân để suy nghĩ','Tìm kiếm sự giúp đỡ từ nhiều người khác'],correct:0}],
+      { id:'5-2', title:'Chủ doanh nghiệp đang mông lung, bế tắc, vô định đã cứu vãn hôn nhân và xây dựng gia đình hạnh phúc như thế nào?', videoId:'4J7ojdJUcgQ',
+        quiz:[{q:'Điều gì giúp vượt qua giai đoạn bế tắc, mông lung trong câu chuyện này?',opts:['Tìm thấy kết nối với bản thân thông qua khai vấn tỉnh thức','Thay đổi công việc ngay lập tức','Tự cô lập bản thân để suy nghĩ','Tìm kiếm sự giúp đỡ từ nhiều người khác'],correct:0}],
         practice:null },
-      { id:'5-3', title:'Câu chuyện của học viên Thanh Tâm', videoId:'clEEPmTR4-4',
-        quiz:[{q:'Điều gì tạo nên sự khác biệt của chương trình Khai vấn tỉnh thức RNI?',opts:['Kết hợp tỉnh thức nội tâm với kỹ năng coach chuyên nghiệp','Chỉ tập trung vào kỹ thuật coach','Chỉ tập trung vào nội tâm mà không có kỹ năng','Giống như các chương trình coach khác'],correct:0}],
+      { id:'5-3', title:'Học phát triển bản thân rất nhiều, đã học khai vấn nơi khác có nên đầu tư học khai vấn tỉnh thức hay không?', videoId:'clEEPmTR4-4',
+        quiz:[{q:'Điều gì tạo nên sự khác biệt của chương trình Khai vấn tỉnh thức RNI so với nơi khác?',opts:['Kết hợp tỉnh thức nội tâm với kỹ năng coach chuyên nghiệp','Chỉ tập trung vào kỹ thuật coach','Chỉ tập trung vào nội tâm mà không có kỹ năng','Giống như các chương trình coach khác'],correct:0}],
         practice:null },
-      { id:'5-4', title:'Câu chuyện của học viên Hồng Nhung', videoId:'5b3SZ-0pt6E',
-        quiz:[{q:'Điều gì quan trọng hơn tuổi tác và kinh nghiệm để trở thành người coach?',opts:['Sự chân thật, khiêm tốn và sẵn sàng học hỏi','Bằng cấp và chứng chỉ','Kinh nghiệm sống nhiều năm','Mạng lưới khách hàng rộng lớn'],correct:0}],
+      { id:'5-4', title:'Người trẻ mặc cảm tự ti về bản thân - nói gì về khai vấn?', videoId:'5b3SZ-0pt6E',
+        quiz:[{q:'Điều gì quan trọng hơn tuổi tác và kinh nghiệm để bắt đầu hành trình khai vấn?',opts:['Sự chân thật, khiêm tốn và sẵn sàng học hỏi','Bằng cấp và chứng chỉ','Kinh nghiệm sống nhiều năm','Mạng lưới khách hàng rộng lớn'],correct:0}],
         practice:null },
-      { id:'5-5', title:'Câu chuyện của học viên Tám Nguyễn (Alice)', videoId:'ao_pazFVjiY',
+      { id:'5-5', title:'Hành trình bừng nở của một người mẹ trầm cảm, người vợ, người bác sĩ?', videoId:'ao_pazFVjiY',
         quiz:[{q:'Khai vấn tỉnh thức hỗ trợ bác sĩ và chuyên gia y tế như thế nào?',opts:['Giúp kết hợp sức mạnh tâm trí với chuyên môn y học để hỗ trợ bệnh nhân toàn diện hơn','Thay thế hoàn toàn phương pháp y học truyền thống','Chỉ dành riêng cho những người không có chuyên môn y tế','Giúp bác sĩ làm việc ít đi'],correct:0}],
         practice:null }
     ]
@@ -954,6 +965,55 @@ function LessonView({lesson, progress, onComplete, onBack}) {
   );
 }
 
+// ── CELEBRATION POPUP ─────────────────────────────────────────────────────────
+function CelebrationPopup({onCert}) {
+  const [visible, setVisible] = useState(true);
+  if (!visible) return null;
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{background:'rgba(0,0,0,0.65)'}}
+      onClick={(e)=>{ if(e.target===e.currentTarget) setVisible(false); }}
+    >
+      <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden bounce-in">
+        {/* Confetti top bar */}
+        <div style={{background:'linear-gradient(135deg,#9b1106 0%,#c41a0a 60%,#f59e0b 100%)'}} className="px-6 pt-8 pb-6 text-white text-center relative overflow-hidden">
+          {/* Decorative circles */}
+          <div className="absolute -top-8 -left-8 w-32 h-32 rounded-full opacity-10" style={{background:'#fff'}}/>
+          <div className="absolute -bottom-6 -right-6 w-24 h-24 rounded-full opacity-10" style={{background:'#fff'}}/>
+          <div className="text-6xl mb-3 float">🎉</div>
+          <h2 className="font-heading text-2xl font-black mb-1 leading-tight">Chúc mừng bạn!</h2>
+          <p className="text-white/85 text-sm leading-relaxed">Bạn đã hoàn thành toàn bộ khoá học<br/><strong>Dưỡng Tâm Cùng Khai Vấn Tỉnh Thức</strong></p>
+        </div>
+        {/* Body */}
+        <div className="px-6 py-6 text-center">
+          <div className="flex justify-center gap-5 mb-5">
+            {[
+              {icon:'🌟', label:'Tất cả bài học'},
+              {icon:'📝', label:'Trắc nghiệm'},
+              {icon:'🌱', label:'Thực hành'},
+            ].map((item,i)=>(
+              <div key={i} className="flex flex-col items-center gap-1">
+                <div className="w-12 h-12 bg-green-50 border-2 border-green-200 rounded-xl flex items-center justify-center text-2xl">{item.icon}</div>
+                <span className="text-xs text-gray-500 font-medium">{item.label}</span>
+              </div>
+            ))}
+          </div>
+          <p className="text-gray-600 text-sm leading-relaxed mb-5">
+            Mỗi bước bạn đi hôm nay đang thắp sáng thêm ngọn hải đăng bên trong. Hành trình dưỡng tâm của bạn không dừng lại ở đây! 🌸
+          </p>
+          <Btn onClick={onCert} size="lg" className="w-full pulse-btn mb-3">
+            🏆 Nhận Chứng Chỉ Của Bạn
+          </Btn>
+          <button onClick={()=>setVisible(false)} className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
+            Xem lại sau
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── DASHBOARD ─────────────────────────────────────────────────────────────────
 function Dashboard({userName, progress, onLesson, onCert}) {
   const totalLessons = ALL_LESSONS.length;
@@ -985,13 +1045,17 @@ function Dashboard({userName, progress, onLesson, onCert}) {
           <p className="text-gray-500 text-sm mt-1">Tiếp tục hành trình khai vấn tỉnh thức dưỡng tâm của bạn.</p>
         </div>
 
+        {allDone && <CelebrationPopup onCert={onCert} />}
         {allDone && (
-          <div className="bg-rni-600 rounded-2xl p-5 text-white mb-6 bounce-in shadow-xl flex items-center justify-between flex-wrap gap-3">
-            <div>
-              <h3 className="font-display text-xl font-bold">🎉 Chúc mừng bạn đã hoàn thành!</h3>
-              <p className="text-white/80 text-sm mt-1">Nhận chứng chỉ và khám phá hành trình tiếp theo.</p>
+          <div className="bg-gradient-to-r from-rni-700 to-rni-600 rounded-2xl p-5 text-white mb-6 bounce-in shadow-xl border-2 border-gold-400">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl">🏆</span>
+              <div>
+                <h3 className="font-heading text-base font-bold">Bạn đã hoàn thành toàn bộ khoá học!</h3>
+                <p className="text-white/80 text-xs mt-0.5">Chứng chỉ của bạn đã sẵn sàng.</p>
+              </div>
             </div>
-            <Btn variant="gold" onClick={onCert}>Xem Chứng Chỉ 🏆</Btn>
+            <Btn variant="gold" onClick={onCert} className="w-full pulse-btn">Nhận Chứng Chỉ Của Bạn 🏆</Btn>
           </div>
         )}
 
@@ -1176,6 +1240,48 @@ function CertScreen({userName, onBack}) {
                   <span className="text-rni-600 font-bold text-sm group-hover:translate-x-1 transition-transform">→</span>
                 </a>
               ))}
+            </div>
+          </div>
+
+          {/* ── CỘNG ĐỒNG CTA ── */}
+          <div className="rounded-2xl overflow-hidden shadow-lg border-2 border-gold-400">
+            {/* Header gradient */}
+            <div style={{background:'linear-gradient(135deg,#9b1106 0%,#c41a0a 55%,#f59e0b 100%)'}} className="px-6 py-5 text-center relative overflow-hidden">
+              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full opacity-10 bg-white"/>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full opacity-10 bg-white"/>
+              <div className="text-4xl mb-2">💎</div>
+              <h3 className="font-heading text-lg font-black text-white leading-tight">Cộng Đồng</h3>
+              <h4 className="font-heading text-xl font-black text-gold-300 leading-tight">Đánh Thức Viên Ngọc Trong Bạn</h4>
+            </div>
+            {/* Body */}
+            <div className="bg-white px-6 py-5">
+              <p className="text-gray-600 text-sm leading-relaxed text-center mb-5">
+                Được <strong>Học viện Giáo dục chậm RNI</strong> tạo ra như một không gian năng lượng an toàn — nơi bạn được là chính mình và tiếp tục hành trình dưỡng tâm.
+              </p>
+              <div className="space-y-3 mb-6">
+                {[
+                  {num:'01', icon:'🏮', title:'Trở về dưỡng tâm', desc:'Không gian tĩnh lặng để nuôi dưỡng nội tâm mỗi ngày'},
+                  {num:'02', icon:'✨', title:'Kiến tạo cuộc đời thật đẹp', desc:'Cùng nhau thiết kế cuộc đời theo giá trị cốt lõi của bạn'},
+                  {num:'03', icon:'🌱', title:'Xây dựng sự nghiệp ý nghĩa', desc:'Biến sứ mệnh bên trong thành sự nghiệp có ý nghĩa thực sự'},
+                ].map((item,i)=>(
+                  <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-rni-50 border border-rni-100">
+                    <div className="flex-shrink-0 w-10 h-10 bg-rni-600 rounded-xl flex items-center justify-center text-white text-xs font-black">{item.num}</div>
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-xl mt-0.5">{item.icon}</span>
+                      <div>
+                        <p className="font-bold text-gray-900 text-sm">{item.title}</p>
+                        <p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <a href="https://www.facebook.com/groups/danhthucvienngoctrongban" target="_blank" rel="noopener" className="block">
+                <Btn size="lg" className="w-full pulse-btn text-base">
+                  <span className="mr-2">📘</span> Tham Gia Cộng Đồng Ngay
+                </Btn>
+              </a>
+              <p className="text-xs text-gray-400 text-center mt-2">Miễn phí · Cộng đồng Facebook kín · An toàn & tích cực</p>
             </div>
           </div>
         </div>
